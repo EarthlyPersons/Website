@@ -49,3 +49,4 @@ Every word, every pixel, every interaction carries weight.
 - All images: loading="lazy", descriptive alt text.
 - Git commits: Conventional Commits (feat:, fix:, chore:, docs:)
 - WCAG AA contrast minimum on all text/background combinations.
+- Deployment target is Cloudflare Workers for BOTH frontend and backend (no Cloudflare Pages deploys).
