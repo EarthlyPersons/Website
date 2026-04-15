@@ -1,9 +1,7 @@
 import { Hono } from 'hono'
 
-const app = new Hono()
+export const healthRoute = new Hono()
 
-app.get('/', (c) => {
+healthRoute.get('/health', (c) => {
   return c.json({ status: 'ok', timestamp: new Date().toISOString() })
 })
-
-export default app
