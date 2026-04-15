@@ -1,4 +1,4 @@
-name: Deploy Pages
+name: Deploy Frontend Worker
 
 on:
   workflow_dispatch:
@@ -22,9 +22,9 @@ jobs:
         run: npm run build:client
         env:
           VITE_API_URL: ${{ secrets.PRODUCTION_API_URL }}
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy frontend Worker (production)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy client/dist --project-name=healing-practice-client --branch=main
+          command: deploy --config client/wrangler.toml --env production

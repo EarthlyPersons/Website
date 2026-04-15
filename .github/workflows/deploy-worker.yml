@@ -1,4 +1,4 @@
-name: Deploy Worker
+name: Deploy Backend Worker
 
 on:
   workflow_dispatch:
@@ -17,7 +17,7 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
-      - name: Deploy Worker (production)
+      - name: Deploy backend Worker (production)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
