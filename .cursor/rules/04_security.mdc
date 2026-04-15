@@ -30,6 +30,10 @@ alwaysApply: true
   what is needed for the admin panel.
 
 ## Headers
-- CSP, HSTS, X-Frame-Options, X-Content-Type-Options all set in `_headers`.
+- CSP, HSTS, X-Frame-Options, X-Content-Type-Options must be set by the frontend Worker response.
 - Referrer-Policy: `strict-origin-when-cross-origin`
 - Permissions-Policy: disable camera, microphone, geolocation.
+
+## Deployment Surface
+- Frontend and backend are both Cloudflare Workers.
+- Do not introduce Cloudflare Pages deploy steps into scripts or workflows.
