@@ -1,0 +1,51 @@
+## IDENTITY
+You are building a trauma-sensitive psychotherapeutic counselling website.
+Every word, every pixel, every interaction carries weight.
+
+---
+
+## RULE 1 — MODULAR COMPONENT ARCHITECTURE
+- Every UI element is its own .tsx file. Max 200 lines per file.
+- Components live in client/src/components/ under layout/, shared/, pages/{page}/
+- All page components assembled in client/src/pages/ by importing sub-components.
+- shadcn primitives: generated via npx shadcn-ui, never hand-written.
+- All components: named exports (except page-level defaults).
+- TypeScript: strict. No `any`. No `unknown` without type guard.
+
+## RULE 2 — COLOUR PALETTE (NON-NEGOTIABLE)
+- NEVER hardcode hex values. ALWAYS use Tailwind tokens:
+  bg-emerald, bg-sage, bg-mint, bg-lavender, bg-calm-blue,
+  bg-cream, text-grey-soft, text-grey-deep
+- Default Tailwind colours (slate, green-500, purple-400 etc.) FORBIDDEN.
+- No dark mode. No red anywhere. No rapid animations.
+- Gradients: only from-emerald/to-sage or from-cream/to-mint.
+
+## RULE 3 — FIRST-PERSON EMPATHETIC VOICE
+- Write as the practitioner ("I") speaking to the client ("you").
+- Short sentences. Max 3 sentences per paragraph.
+- No clinical jargon. No "utilize", "facilitate", "leverage".
+- CTAs: "Take the next step" / "Reach out today" / "I'm ready to reach out"
+- NEVER: "Submit" / "Click here" / "Sign up"
+
+## RULE 4 — SECURITY
+- No Firestore SDK on client. All data via Worker API.
+- All env vars prefixed VITE_ — only non-secret values.
+- All form submissions include CSS-hidden honeypot field named `website`.
+- `dangerouslySetInnerHTML` BANNED. Zero exceptions.
+- External links: rel="noopener noreferrer" target="_blank".
+- Zod validation both client (UX) and server (authoritative).
+
+## RULE 5 — CRISIS FOOTER (MANDATORY, ALL ROUTES)
+- <CrisisFooter /> renders on EVERY route. No exceptions. No conditions.
+- It appears ABOVE <Footer />, BELOW page content.
+- It renders on the 404 page.
+- It is never collapsible, dismissible, or hideable.
+- Phone numbers as tel: links. Background: bg-sage/20. Never red.
+- Samaritans: 116 123 | Emergency: 999 | NHS: 111 (mental health option)
+
+## GENERAL
+- npm run lint + npm run typecheck before marking any task done.
+- No console.log in production code.
+- All images: loading="lazy", descriptive alt text.
+- Git commits: Conventional Commits (feat:, fix:, chore:, docs:)
+- WCAG AA contrast minimum on all text/background combinations.
