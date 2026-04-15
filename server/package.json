@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "wrangler dev",
-    "build": "wrangler deploy --dry-run",
+    "build": "tsc --noEmit && wrangler deploy --dry-run",
     "lint": "eslint . --ext ts --report-unused-disable-directives --max-warnings 0",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "hono": "^4.5.8",
-    "firebase-admin": "^12.5.0",
-    "resend": "^4.0.0",
+    "jose": "^5.9.6",
     "zod": "^3.23.8"
   },
   "devDependencies": {

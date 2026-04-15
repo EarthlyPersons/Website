@@ -26,22 +26,22 @@
     "test": "npm run test --workspaces --if-present",
     "test:e2e": "playwright test",
     "format": "prettier --write \"**/*.{ts,tsx,json,md,css}\" --ignore-path .gitignore",
-    "prepare": "husky",
-    "deploy": "npm run deploy:client && npm run deploy:worker",
-    "deploy:client": "npm run build:client && wrangler pages deploy client/dist --project-name=healing-practice-client --branch=main",
-    "deploy:worker": "npm run build:server && wrangler deploy --config server/wrangler.toml --env production",
-    "deploy:staging": "npm run deploy:client:staging && npm run deploy:worker:staging",
-    "deploy:client:staging": "npm run build:client && wrangler pages deploy client/dist --project-name=healing-practice-client --branch=staging",
-    "deploy:worker:staging": "npm run build:server && wrangler deploy --config server/wrangler.toml --env staging",
+    "prepare": "simple-git-hooks",
+    "deploy": "npm run deploy:frontend && npm run deploy:backend",
+    "deploy:frontend": "npm run build:client && wrangler deploy --config client/wrangler.toml --env production",
+    "deploy:backend": "npm run build:server && wrangler deploy --config server/wrangler.toml --env production",
+    "deploy:staging": "npm run deploy:frontend:staging && npm run deploy:backend:staging",
+    "deploy:frontend:staging": "npm run build:client && wrangler deploy --config client/wrangler.toml --env staging",
+    "deploy:backend:staging": "npm run build:server && wrangler deploy --config server/wrangler.toml --env staging",
     "wrangler:tail": "wrangler tail --config server/wrangler.toml --env production",
     "wrangler:secret:set": "wrangler secret put --config server/wrangler.toml"
   },
   "devDependencies": {
     "@playwright/test": "^1.47.0",
     "concurrently": "^9.0.0",
-    "husky": "^9.1.0",
     "lint-staged": "^15.2.0",
     "prettier": "^3.3.0",
+    "simple-git-hooks": "^2.13.1",
     "wrangler": "^3.78.0"
   },
   "lint-staged": {
@@ -52,6 +52,9 @@
     "*.{json,md,css}": [
       "prettier --write"
     ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
   },
   "overrides": {
     "zod": "3.23.8"
