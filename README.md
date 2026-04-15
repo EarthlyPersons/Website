@@ -168,10 +168,11 @@ npm run dev
 
 ### Local files
 
-| File                | Purpose                           |
-| ------------------- | --------------------------------- |
-| `client/.env.local` | frontend runtime env (non-secret) |
-| `server/.dev.vars`  | backend local secrets/config      |
+| File                | Purpose                                                                                 |
+| ------------------- | --------------------------------------------------------------------------------------- |
+| `client/.env.local` | frontend runtime env (non-secret)                                                       |
+| `.env.deploy`       | optional; API URL / workers.dev label for `npm run deploy` (from `.env.deploy.example`) |
+| `server/.dev.vars`  | backend local secrets/config                                                            |
 
 ### Backend required values
 
@@ -188,17 +189,19 @@ npm run dev
 
 ## 8. Scripts
 
-| Command                     | Purpose                                    |
-| --------------------------- | ------------------------------------------ |
-| `npm run dev`               | run frontend + backend locally             |
-| `npm run lint`              | lint all workspaces                        |
-| `npm run typecheck`         | TS check all workspaces                    |
-| `npm run build`             | build shared + client + server             |
-| `npm run test:e2e`          | Playwright e2e                             |
-| `npm run setup:local`       | generate missing local env files           |
-| `npm run setup:local:check` | validate local env file/value completeness |
-| `npm run deploy`            | deploy frontend + backend (production)     |
-| `npm run deploy:staging`    | deploy frontend + backend (staging)        |
+| Command                     | Purpose                                                              |
+| --------------------------- | -------------------------------------------------------------------- |
+| `npm run dev`               | run frontend + backend locally                                       |
+| `npm run lint`              | lint all workspaces                                                  |
+| `npm run typecheck`         | TS check all workspaces                                              |
+| `npm run build`             | build shared + client + server                                       |
+| `npm run test:e2e`          | Playwright e2e                                                       |
+| `npm run setup:local`       | generate missing local env files                                     |
+| `npm run setup:local:check` | validate local env file/value completeness                           |
+| `npm run deploy`            | deploy backend then frontend (production); see `.env.deploy.example` |
+| `npm run deploy:staging`    | same for staging Workers                                             |
+| `npm run deploy:frontend`   | production frontend only (needs API URL for client build)            |
+| `npm run deploy:backend`    | production backend only                                              |
 
 ---
 
@@ -209,12 +212,13 @@ npm run dev
 - Frontend Worker config: `client/wrangler.toml`
 - Backend Worker config: `server/wrangler.toml`
 
-### Production deploy sequence
+### Production deploy
 
 ```bash
-npm run deploy:frontend
-npm run deploy:backend
+npm run deploy
 ```
+
+Copy `.env.deploy.example` to `.env.deploy` (or export variables) so the client build gets `VITE_API_URL` or `CLOUDFLARE_WORKERS_DEV_SUBDOMAIN`. The backend Worker receives `ENVIRONMENT` from Wrangler (`production` vs `staging`); secrets are still set with Wrangler, not by this script.
 
 ### GitHub secrets required
 

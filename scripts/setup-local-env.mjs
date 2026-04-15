@@ -12,6 +12,11 @@ const mappings = [
     required: false,
   },
   {
+    template: resolve(rootDir, '.env.deploy.example'),
+    target: resolve(rootDir, '.env.deploy'),
+    required: false,
+  },
+  {
     template: resolve(rootDir, 'server/.dev.vars.example'),
     target: resolve(rootDir, 'server/.dev.vars'),
     required: true,
@@ -119,5 +124,6 @@ if (checkMode) {
   console.log(`Setup complete. Created ${createdCount} file(s).`)
   console.log('Next step: fill in values in:')
   console.log('- client/.env.local')
+  console.log('- .env.deploy (for npm run deploy / CLOUDFLARE_WORKERS_DEV_SUBDOMAIN or VITE_API_URL)')
   console.log('- server/.dev.vars')
 }

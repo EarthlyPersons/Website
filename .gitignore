@@ -10,6 +10,7 @@ shared/dist/
 
 # Environment variables
 .env
+.env.deploy
 .env.local
 server/.dev.vars
 .env.development.local

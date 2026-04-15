@@ -16,7 +16,9 @@
 
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
-- `PRODUCTION_API_URL`
+- `PRODUCTION_API_URL` (full `https://…` API Worker URL; passed as `VITE_API_URL` during `scripts/deploy.mjs`)
+
+Local deploys can use the same values in `.env.deploy` (see `.env.deploy.example` in the repo root).
 
 ## Required Worker secrets (backend)
 
