@@ -1,0 +1,44 @@
+---
+description: Enforces modular component architecture and TypeScript discipline
+globs: ["client/src/**/*.tsx", "client/src/**/*.ts", "server/src/**/*.ts"]
+alwaysApply: true
+---
+
+# Architecture Rules
+
+## Component Boundaries
+- One responsibility per component. If a component does two visual things, split it.
+- Props interfaces must be explicitly typed. No inline type literals on the component signature.
+- Co-locate component-specific hooks in the same directory with a `use` prefix.
+- Barrel exports (`index.ts`) are allowed at the directory level for cleaner imports.
+
+## File Naming
+- Components: `PascalCase.tsx`
+- Hooks: `useCamelCase.ts`
+- Utilities: `camelCase.ts`
+- Types: `camelCase.ts` or co-located with component
+- Constants: `SCREAMING_SNAKE_CASE` for values, `camelCase.ts` for the file
+
+## Import Order (enforced by ESLint)
+1. React and React ecosystem
+2. Third-party libraries
+3. Internal aliases (`@/`)
+4. Relative imports (`./`, `../`)
+5. Type imports (last, using `import type`)
+
+## State Management
+- Component-local state: `useState`, `useReducer`
+- Cross-component shared state: Zustand store in `client/src/hooks/`
+- Server state / async: React Query (if added) or native `useEffect` with loading states
+- No prop drilling beyond 2 levels — use context or Zustand
+
+## Routing
+- All routes defined in `client/src/App.tsx`
+- Nested layouts via `<Outlet />` pattern
+- Route-level code splitting via `React.lazy` + `Suspense`
+- 404 fallback route always present
+
+## Error Handling
+- All async operations have try/catch
+- User-facing errors show a warm, plain-language message — not stack traces
+- Network errors in forms: "Something went wrong — please try again, or email me directly."

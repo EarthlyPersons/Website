@@ -1,0 +1,35 @@
+---
+description: Security rules for all code generation
+globs: ["client/src/**", "server/src/**"]
+alwaysApply: true
+---
+
+# Security Rules
+
+## Client-Side
+- No Firebase Firestore SDK imported in client. All data goes via Worker API.
+- No secrets in `VITE_` env vars — only the API base URL.
+- All form fields sanitized with Zod before submission.
+- Honeypot field named `website` (CSS hidden) on all forms.
+- `dangerouslySetInnerHTML` is BANNED. Zero exceptions.
+- All external links: `rel="noopener noreferrer"` and `target="_blank"`.
+
+## Server-Side (Worker)
+- Every request to `/api/enquiry` validated against Zod schema BEFORE any processing.
+- Rate limit: 5 requests / IP / 15 minutes via CF Rate Limiting.
+- IP logged only in transient CF cache — not written to Firestore.
+- Firestore write only after sanitization pass.
+- CORS: allow only the production domain + localhost in development.
+- No stack traces in API error responses — return generic messages to client.
+- All Firestore document IDs: `crypto.randomUUID()` — never user-provided.
+
+## Firestore
+- Public writes: NEVER. All writes are server-to-server (Worker → Firestore via Admin SDK).
+- Public reads: NEVER. No client-side Firestore reads.
+- Rules file (`firestore.rules`) must deny all by default and explicitly open only
+  what is needed for the admin panel.
+
+## Headers
+- CSP, HSTS, X-Frame-Options, X-Content-Type-Options all set in `_headers`.
+- Referrer-Policy: `strict-origin-when-cross-origin`
+- Permissions-Policy: disable camera, microphone, geolocation.

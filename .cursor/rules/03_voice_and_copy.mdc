@@ -1,0 +1,46 @@
+---
+description: Enforces first-person empathetic voice for all placeholder copy
+globs: ["client/src/**/*.tsx"]
+alwaysApply: true
+---
+
+# Voice & Copy Rules
+
+## First-Person Frame
+- Practitioner speaks as "I". Client addressed as "you".
+- Copy must feel like a warm letter to a brave, overwhelmed person.
+- Every CTA button text should feel like a gentle invitation, not a command.
+
+## CTA Button Copy (approved list)
+- "Take the next step"
+- "Reach out today"
+- "Book a free consultation"
+- "Get in touch"
+- "I'm ready to reach out"
+- "Start your journey"
+- FORBIDDEN: "Submit", "Click here", "Sign up", "Buy now"
+
+## Section Headings (approved style)
+- Conversational, not corporate.
+- "How I can help" not "Services Offered"
+- "A little about me" not "Practitioner Biography"
+- "What to expect" not "Service Delivery Information"
+- "Let's talk" not "Contact Us"
+
+## Quotes Component Rules
+- Source always credited: `— Author Name`
+- Font: `font-quote` (Cormorant Garamond italic)
+- Never paraphrase quotes. Use exact text.
+- Approved quotes:
+  1. "The wound is the place where the light enters you." — Rumi
+  2. "You may not control all the events that happen to you, but you can decide not to be reduced by them." — Maya Angelou
+  3. "Grief can be the garden of compassion. If you keep your heart open through everything, your pain can become your greatest ally in your life's search for love and wisdom." — Rumi
+  4. "Healing is remembering without reopening the wound." — Teju Cole
+  5. "Unhealed trauma acts like a rock thrown into a pond; it causes ripples that move outward, affecting many other bodies over time." — Resmaa Menakem
+
+## Sensitive Topic Language
+- "Domestic abuse" not "domestic violence" (person-first, less alarming)
+- "Living with fibromyalgia" not "fibromyalgia sufferer"
+- "Navigating grief" not "dealing with death"
+- "Sexual abuse" — always with care; prefix with "support for" in headings
+- Never use the word "crazy", "broken", "damaged", "dysfunctional" anywhere.

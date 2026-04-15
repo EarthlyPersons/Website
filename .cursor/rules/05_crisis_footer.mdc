@@ -1,0 +1,28 @@
+---
+description: Mandates CrisisFooter on every route without exception
+globs: ["client/src/**/*.tsx"]
+alwaysApply: true
+---
+
+# Crisis Footer Rules
+
+## Non-Negotiable Placement
+The `<CrisisFooter />` component:
+1. Is imported in the shared `<Layout />` component.
+2. Renders ABOVE `<Footer />`, BELOW all page content.
+3. Cannot be wrapped in any conditional rendering logic.
+4. Cannot be removed or hidden on any route.
+5. Must appear on the 404 / error boundary page.
+6. Must be the first thing a screen reader encounters after main content
+   (ARIA landmark: `<aside role="complementary" aria-label="Crisis support information">`).
+
+## Phone Numbers (always exact, always tel: links)
+- Samaritans: 116 123 → `<a href="tel:116123">`
+- Emergency: 999 → `<a href="tel:999">`
+- NHS Mental Health (111): `<a href="tel:111">`
+
+## Styling Constraints
+- Background: `bg-sage/20` — soft, not alarming
+- Text: `text-grey-deep`
+- Icon: Lucide `Heart` or `Leaf`, colour `text-emerald`, size `16`
+- Never use red, never use ALL CAPS, never use words like "EMERGENCY" in large type.

@@ -1,0 +1,50 @@
+---
+description: Enforces Nature-Calming colour palette and design tokens
+globs: ["client/src/**/*.tsx", "client/src/**/*.css"]
+alwaysApply: true
+---
+
+# Styling Rules
+
+## Tailwind Usage
+- ONLY use colour tokens from `tailwind.config.ts`. The custom palette is:
+  emerald, sage, mint, lavender, calm-blue, cream, grey-soft, grey-deep
+- Default Tailwind colours (slate, stone, green-500, etc.) are FORBIDDEN.
+- Exception: `white`, `black`, `transparent` are allowed.
+
+## Spacing & Layout
+- Use Tailwind spacing scale consistently.
+- Section padding: `py-16 md:py-24`
+- Container max-width: `max-w-5xl mx-auto px-4 sm:px-6`
+- Cards: `rounded-2xl` (soft corners, never sharp)
+- Shadows: `shadow-sm` or `shadow-md` — never `shadow-xl` or `shadow-2xl`
+
+## Typography Classes
+- Hero headings: `font-display text-4xl md:text-6xl text-grey-deep`
+- Section headings: `font-display text-2xl md:text-3xl text-grey-deep`
+- Body: `font-body text-base text-grey-soft leading-relaxed`
+- Quotes: `font-quote text-xl md:text-2xl italic text-emerald`
+- Labels/UI: `font-body text-sm font-medium text-grey-deep`
+
+## Buttons
+- Primary CTA: `bg-emerald text-white hover:bg-emerald/90 rounded-full px-8 py-3`
+- Secondary: `border border-emerald text-emerald hover:bg-mint/30 rounded-full px-8 py-3`
+- Never use square buttons (`rounded-none`) — this is a warm, soft design.
+
+## Imagery
+- Hero: St Lucian Pitons or sea imagery — full-bleed with soft overlay
+- Overlay pattern: `bg-gradient-to-b from-transparent to-cream/60`
+- All `<img>` tags: `object-cover` with explicit `width` and `height`
+- Lazy loading: `loading="lazy"` on all below-fold images
+
+## Animation
+- Use Framer Motion for page transitions and scroll reveals.
+- Duration: 0.4–0.6s. Easing: `ease-out`.
+- Respect `prefers-reduced-motion` — wrap animations in a check.
+- Scroll reveals: fade-up (`y: 20 → 0, opacity: 0 → 1`)
+
+## Forbidden Patterns
+- No dark backgrounds on main content areas
+- No red colour anywhere (trauma-sensitive — avoid alarm associations)
+- No flashing or rapid animations
+- No full-caps body copy (accessibility)
