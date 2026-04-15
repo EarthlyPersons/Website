@@ -1,6 +1,8 @@
 // client/tailwind.config.ts  [COPY EXACTLY]
 import type { Config } from 'tailwindcss'
 import { fontFamily } from 'tailwindcss/defaultTheme'
+import tailwindTypography from '@tailwindcss/typography'
+import tailwindForms from '@tailwindcss/forms'
 
 const config: Config = {
   darkMode: false,
@@ -25,8 +27,8 @@ const config: Config = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
+    tailwindTypography,
+    tailwindForms,
   ],
 }
 export default config
