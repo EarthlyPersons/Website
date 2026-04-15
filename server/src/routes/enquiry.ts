@@ -1,7 +1,6 @@
 import { Hono } from 'hono'
 import { zValidator } from '@hono/zod-validator'
 import { z } from 'zod'
-import { EnquiryDocument, ReferralSource } from '../../../shared/types/enquiry'
 
 const enquirySchema = z.object({
   name: z.string().min(1).max(100),
