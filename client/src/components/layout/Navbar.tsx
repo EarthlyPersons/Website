@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Heart } from 'lucide-react'
+import { navItems } from '../../navigation'
 
 export default function Navbar() {
   return (
@@ -11,15 +12,11 @@ export default function Navbar() {
             <span className="font-display text-xl">Healing Practice</span>
           </Link>
           <div className="space-x-6">
-            <Link to="/about" className="text-grey-deep hover:text-emerald">
-              About
-            </Link>
-            <Link to="/services" className="text-grey-deep hover:text-emerald">
-              Services
-            </Link>
-            <Link to="/contact" className="text-grey-deep hover:text-emerald">
-              Contact
-            </Link>
+            {navItems.map((item) => (
+              <Link key={item.to} to={item.to} className="text-grey-deep hover:text-emerald">
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
