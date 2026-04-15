@@ -1,10 +1,22 @@
+import { Link } from 'react-router-dom'
+import SectionWrapper from '../components/shared/SectionWrapper'
+
 export default function NotFound() {
   return (
-    <div className="py-16 md:py-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-        <h1 className="text-4xl font-display mb-8">Page Not Found</h1>
-        <p className="text-lg text-grey-soft">The page you're looking for doesn't exist.</p>
+    <SectionWrapper>
+      <div className="text-center max-w-xl mx-auto">
+        <h1 className="font-display text-3xl md:text-4xl text-grey-deep mb-4">Page not found</h1>
+        <p className="font-body text-lg text-grey-soft leading-relaxed mb-8">
+          That link does not lead anywhere on this site. If you were looking for support, you have
+          not done anything wrong — sometimes pages move, or a link gets mistyped.
+        </p>
+        <Link
+          to="/"
+          className="inline-flex rounded-full bg-emerald px-8 py-3 font-body text-cream hover:bg-emerald/90 transition-colors"
+        >
+          Take the next step
+        </Link>
       </div>
-    </div>
+    </SectionWrapper>
   )
 }

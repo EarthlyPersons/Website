@@ -9,14 +9,19 @@ export default function AboutPreview() {
           <div>
             <h2 className="text-3xl font-display mb-6">About Me</h2>
             <p className="text-grey-soft mb-6">
-              I am a qualified psychotherapeutic counsellor with years of experience helping individuals navigate life's challenges. My approach is compassionate, non-judgmental, and tailored to each person's unique journey.
+              I am a qualified psychotherapeutic counsellor with years of experience helping
+              individuals navigate life's challenges. My approach is compassionate, non-judgmental,
+              and tailored to each person's unique journey.
             </p>
-            <Link to="/about" className="text-emerald hover:underline">Read more about my background</Link>
+            <Link to="/about" className="text-emerald hover:underline">
+              Read more about my background
+            </Link>
           </div>
           <div>
             <QuoteComponent
-              quote="The meeting of two personalities is like the contact of two chemical substances: if there is any reaction, both are transformed."
-              author="Carl Jung"
+              text="Grief can be the garden of compassion. If you keep your heart open through everything, your pain can become your greatest ally in your life's search for love and wisdom."
+              author="Rumi"
+              variant="subtle"
             />
           </div>
         </div>
