@@ -1,0 +1,3 @@
+Private project. All rights reserved.
+
+No permission is granted to use, copy, modify, merge, publish, distribute, sublicense, or sell copies of this software without explicit written permission from the copyright holder.
