@@ -12,7 +12,8 @@ export interface RateLimiter {
 
 export type WorkerBindings = {
   ENVIRONMENT: string
-  ALLOWED_ORIGIN: string
+  /** Optional extra browser origin (e.g. custom domain). workers.dev frontends are allowed by default in CORS. */
+  ALLOWED_ORIGIN?: string
   /** Set via Wrangler secrets / vars when Firestore persistence is enabled */
   FIREBASE_PROJECT_ID?: string
   FIREBASE_CLIENT_EMAIL?: string

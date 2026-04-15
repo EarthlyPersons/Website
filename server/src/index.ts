@@ -5,20 +5,23 @@ import { healthRoute } from './routes/health'
 import { settingsRoute } from './routes/settings'
 import type { WorkerBindings } from './types/bindings'
 
+/** Default Cloudflare Workers dev hostnames for this project’s web worker(s). */
+const workersDevFrontend =
+  /^https:\/\/(?:healing-practice-web|healing-practice-web-staging)\.[a-z0-9-]+\.workers\.dev$/i
+
+function browserOriginAllowed(origin: string, extra?: string): boolean {
+  if (extra && origin === extra) return true
+  if (origin === 'http://localhost:5173' || origin === 'http://localhost:4173') return true
+  return workersDevFrontend.test(origin)
+}
+
 const app = new Hono<{ Bindings: WorkerBindings }>()
 
 app.use('*', async (c, next) => {
   const corsMiddleware = cors({
     origin: (origin) => {
-      const allowed = [
-        c.env.ALLOWED_ORIGIN,
-        'http://localhost:5173',
-        'http://localhost:4173',
-        'https://healingpractice.co.uk',
-        'https://www.healingpractice.co.uk',
-      ].filter(Boolean) as string[]
       if (!origin) return null
-      return allowed.includes(origin) ? origin : null
+      return browserOriginAllowed(origin, c.env.ALLOWED_ORIGIN) ? origin : null
     },
     allowMethods: ['GET', 'POST', 'OPTIONS'],
     allowHeaders: ['Content-Type'],

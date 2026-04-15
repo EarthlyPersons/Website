@@ -39,5 +39,3 @@ User-agent: Bingbot
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-
-Sitemap: https://www.healingpractice.co.uk/sitemap.xml

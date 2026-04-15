@@ -9,10 +9,6 @@ binding = "ASSETS"
 
 [env.production]
 name = "healing-practice-web"
-routes = [
-  { pattern = "healingpractice.co.uk/*", zone_name = "healingpractice.co.uk" },
-  { pattern = "www.healingpractice.co.uk/*", zone_name = "healingpractice.co.uk" }
-]
 
 [env.staging]
 name = "healing-practice-web-staging"
