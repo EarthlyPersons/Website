@@ -11,6 +11,7 @@ shared/dist/
 # Environment variables
 .env
 .env.local
+server/.dev.vars
 .env.development.local
 .env.test.local
 .env.production.local
