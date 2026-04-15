@@ -1,0 +1,12 @@
+# Copy to server/.dev.vars (not committed) for local Wrangler development.
+# Wrangler secrets for production/staging are set via: npm run wrangler:secret:set
+
+FIREBASE_PROJECT_ID=
+FIREBASE_CLIENT_EMAIL=
+FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
+
+RESEND_API_KEY=
+ADMIN_NOTIFICATION_EMAIL=
+
+# Optional verified sender in Resend (falls back to onboarding@resend.dev if unset)
+RESEND_FROM=
