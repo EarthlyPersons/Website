@@ -18,7 +18,7 @@
     "lucide-react": "^0.439.0",
     "react-hook-form": "^7.53.0",
     "zod": "^3.23.8",
-    "@hookform/resolvers": "^3.9.0",
+    "@hookform/resolvers": "^5.2.2",
     "@fontsource/playfair-display": "^5.0.8",
     "@fontsource/dm-sans": "^5.0.8",
     "@fontsource/cormorant-garamond": "^5.0.8"
