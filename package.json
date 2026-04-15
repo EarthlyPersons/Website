@@ -2,8 +2,15 @@
   "name": "healing-practice-monorepo",
   "version": "1.0.0",
   "private": true,
-  "workspaces": ["client", "server", "shared"],
-  "engines": { "node": ">=20.0.0", "npm": ">=10.0.0" },
+  "workspaces": [
+    "client",
+    "server",
+    "shared"
+  ],
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "npm run dev --workspace=client",
@@ -36,7 +43,15 @@
     "wrangler": "^3.78.0"
   },
   "lint-staged": {
-    "*.{ts,tsx}": ["eslint --fix", "prettier --write"],
-    "*.{json,md,css}": ["prettier --write"]
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
+  },
+  "overrides": {
+    "zod": "3.23.8"
   }
 }
