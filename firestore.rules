@@ -1,0 +1,42 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    match /enquiries/{enquiryId} {
+      allow read: if false;
+      allow write: if false;
+      allow read, write: if
+        request.auth != null &&
+        request.auth.token.admin == true;
+      allow update: if
+        request.auth != null &&
+        request.auth.token.admin == true &&
+        request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['status', 'adminNotes', 'updatedAt', 'respondedAt']) &&
+        request.resource.data.status in ['new', 'read', 'responded', 'archived'] &&
+        request.resource.data.adminNotes.size() <= 500;
+    }
+
+    match /settings/global {
+      allow read: if true;
+      allow write: if
+        request.auth != null &&
+        request.auth.token.admin == true &&
+        request.resource.data.bannerMessage.size() <= 200 &&
+        request.resource.data.keys().hasAll(
+          ['acceptingNewClients', 'bannerMessage', 'updatedAt', 'updatedBy']
+        );
+    }
+
+    match /settings/{doc} {
+      allow read, write: if
+        doc == 'global' &&
+        request.auth != null &&
+        request.auth.token.admin == true;
+    }
+  }
+}
