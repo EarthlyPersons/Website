@@ -1,0 +1,17 @@
+{
+  "name": "Healing Practice — Psychotherapeutic Counselling",
+  "short_name": "Healing Practice",
+  "description": "Trauma-sensitive, LGBTQ+ affirming online psychotherapeutic counselling.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F5F2",
+  "theme_color": "#2F6F4F",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
